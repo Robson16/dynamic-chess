@@ -1,4 +1,4 @@
-Dynamic Chess: Tabuleiro Dinâmico com React e Next.js
+# Dynamic Chess: Tabuleiro Dinâmico com React e Next.js
 
 Este projeto apresenta um tabuleiro de xadrez dinâmico e responsivo, construído com Next.js e React. O objetivo é criar uma base funcional do jogo com dimensões customizáveis e peças com movimentos específicos.
 
