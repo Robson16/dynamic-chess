@@ -29,8 +29,8 @@ Siga os passos abaixo para configurar e rodar o projeto em sua máquina local:
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [URL_DO_SEU_REPOSITORIO]
-    cd [NOME_DO_SEU_PROJETO]
+    git clone https://github.com/Robson16/dynamic-chess.git
+    cd dynamic-chess
     ```
 
 2.  **Instale as dependências:**
