@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "name": "dynamic-chess",
+  "description": "Um tabuleiro de xadrez dinâmico e responsivo em Next.js/React com dimensões customizáveis e peças de movimento específico.",
+  "private": false,
+  "author": "Robson H. Rodrigues <robhenrod@gmail.com>",
+  "homepage": "",
+  "repository": "",
+  "keywords": [
+    "ReactJs",
+    "TypeScript",
+    "NextJS"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "2.1.10",
+    "next": "15.3.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.17.50",
+    "@types/react": "19.1.5",
+    "@types/react-dom": "19.1.5",
+    "sass": "1.89.0",
+    "typescript": "5.8.3"
+  }
+}
