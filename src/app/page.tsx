@@ -126,7 +126,7 @@ export default function Home() {
       )}
 
       <footer className={styles.footer}>
-        © UNVOID. All Rights Reserved.
+        All Rights Reserved.
       </footer>
     </div>
   );
