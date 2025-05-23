@@ -9,8 +9,8 @@ const kanit = Kanit({
 });
 
 export const metadata: Metadata = {
-  title: "Unvoid Chess Game Challenge",
-  description: "Programming challenge to implement a custom chess game.",
+  title: "Dynamic Chess",
+  description: "A dynamic and responsive chessboard in Next.js/React with customizable dimensions and specific movement pieces.",
 };
 
 export default function RootLayout({

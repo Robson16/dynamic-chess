@@ -1,18 +1,18 @@
 {
-  "version": "0.1.0",
   "name": "dynamic-chess",
-  "description": "Um tabuleiro de xadrez dinâmico e responsivo em Next.js/React com dimensões customizáveis e peças de movimento específico.",
-  "private": false,
+  "version": "0.1.0",
+  "description": "A dynamic and responsive chessboard in Next.js/React with customizable dimensions and specific movement pieces.",
   "author": {
     "name": "Robson H. Rodrigues",
     "url": "https://github.com/Robson16"
   },
-  "homepage": "https://dynamic-chess.vercel.app/",
   "license": "MIT",
+  "private": true,
+  "type": "module",
+  "homepage": "https://dynamic-chess.vercel.app/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Robson16/dynamic-chess",
-    "directory": "dynamic-chess"
+    "url": "https://github.com/Robson16/dynamic-chess.git"
   },
   "bugs": {
     "url": "https://github.com/Robson16/dynamic-chess/issues"
@@ -20,9 +20,11 @@
   "keywords": [
     "ReactJs",
     "TypeScript",
-    "NextJS"
+    "NextJS",
+    "Chess",
+    "Game",
+    "Dynamic Board"
   ],
-  "type": "module",
   "engines": {
     "node": ">=20"
   },

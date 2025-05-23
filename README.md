@@ -1,93 +1,92 @@
-# Dynamic Chess: Tabuleiro Dinâmico com React e Next.js
+# Dynamic Chess: Dynamic Board with React and Next.js
 
-Este projeto apresenta um tabuleiro de xadrez dinâmico e responsivo, construído com Next.js e React. O objetivo é criar uma base funcional do jogo com dimensões customizáveis e peças com movimentos específicos.
-
---- 
-
-## Recursos Implementados
-
-* **Tabuleiro Dinâmico**: As dimensões do tabuleiro (eixos X e Y) podem ser definidas pelo usuário através de inputs numéricos.
-* **Validação de Dimensões**: O tabuleiro só é renderizado se as dimensões estiverem entre 6x6 e 12x12 (vertical e horizontalmente), garantindo um tamanho de jogo válido. Mensagens de feedback são exibidas para o usuário.
-    * **Exemplos de dimensões permitidas:** 6x6, 6x8, 6x12, 12x12, 10x7.
-    * **Exemplos de dimensões NÃO permitidas:** 13x6, 5x6.
-* **Design Responsivo**: As células do tabuleiro se adaptam ao tamanho da tela, mantendo a proporção quadrada, e o layout da configuração do jogo se ajusta para dispositivos móveis.
-* **Estilização com SCSS**: Utiliza SCSS para uma estilização modular e organizada, com variáveis CSS para gerenciamento de cores.
+This project features a dynamic and responsive chessboard, built with Next.js and React. The goal is to create a functional game foundation with customizable dimensions and pieces with specific movements.
 
 ---
 
-## Tecnologias Utilizadas
+## Implemented Features
 
-* **Next.js**: Framework React para renderização do lado do servidor e otimizações.
-* **React**: Biblioteca JavaScript para construção da interface do usuário.
-* **SCSS (Sass)**: Pré-processador CSS para estilos mais poderosos e organizados.
+* **Dynamic Board**: Board dimensions (X and Y axes) can be defined by the user via numerical inputs.
+* **Dimension Validation**: The board is only rendered if the dimensions are between 6x6 and 12x12 (vertically and horizontally), ensuring a valid game size. Feedback messages are displayed to the user.
+    * **Examples of allowed dimensions:** 6x6, 6x8, 6x12, 12x12, 10x7.
+    * **Examples of NOT allowed dimensions:** 13x6, 5x6.
+* **Responsive Design**: Board cells adapt to screen size, maintaining their square aspect ratio, and the game configuration layout adjusts for mobile devices.
+* **SCSS Styling**: Uses SCSS for modular and organized styling, with CSS variables for color management.
 
 ---
 
-## Como Rodar o Projeto
+## Technologies Used
 
-Siga os passos abaixo para configurar e rodar o projeto em sua máquina local:
+* **Next.js**: React framework for server-side rendering and optimizations.
+* **React**: JavaScript library for building user interfaces.
+* **SCSS (Sass)**: CSS pre-processor for more powerful and organized styles.
 
-1.  **Clone o repositório:**
+---
+
+## How to Run the Project
+
+Follow the steps below to set up and run the project on your local machine:
+
+1.  **Clone the repository:**
     ```bash
     git clone https://github.com/Robson16/dynamic-chess.git
     cd dynamic-chess
     ```
 
-2.  **Instale as dependências:**
+2.  **Install dependencies:**
     ```bash
     npm install
-    # ou
+    # or
     yarn install
     ```
 
-3.  **Inicie o servidor de desenvolvimento:**
+3.  **Start the development server:**
     ```bash
     npm run dev
-    # ou
+    # or
     yarn dev
     ```
 
-    O aplicativo estará disponível em `http://localhost:3000`.
+    The application will be available at `http://localhost:3000`.
 
 ---
 
-## Regras do Jogo e Peças
+## Game Rules and Pieces
 
-### 1. O Tabuleiro
+### 1. The Board
 
-O tabuleiro pode ter dimensões personalizadas definidas pelo usuário, que devem estar entre **6x6 e 12x12** casas.
+The board can have custom dimensions defined by the user, which must be between **6x6 and 12x12** squares.
 
-### 2. As Peças
+### 2. The Pieces
 
-#### 2.1. O "Developer"
-* Pode mover-se para qualquer casa do tabuleiro.
-* O jogo termina quando o Developer captura ou é capturado.
-* **Captura**: Captura a peça inimiga movendo-se para a casa dela.
+#### 2.1. The "Developer"
+* Can move to any square on the board.
+* The game ends when the Developer captures or is captured.
+* **Capture**: Captures the enemy piece by moving to its square.
 
-#### 2.2. O "Designer"
-* Move-se como um Bispo (diagonais livres).
-* **Captura**: Captura a peça inimiga movendo-se para a casa dela.
+#### 2.2. The "Designer"
+* Moves like a Bishop (free diagonals).
+* **Capture**: Captures the enemy piece by moving to its square.
 
-#### 2.3. O "Product Owner"
-* Move-se como uma Torre (linhas e colunas livres).
-* **Captura**: Captura a peça inimiga movendo-se para a casa dela.
+#### 2.3. The "Product Owner"
+* Moves like a Rook (free rows and columns).
+* **Capture**: Captures the enemy piece by moving to its square.
 
-### 3. Posição Inicial das Peças
+### 3. Initial Piece Positions
 
-As peças são colocadas no tabuleiro de acordo com as seguintes regras, baseadas nas dimensões `axleX` (largura) e `axleY` (altura) do tabuleiro:
+Pieces are placed on the board according to the following rules, based on the board's `axleX` (width) and `axleY` (height) dimensions:
 
-* **Developer**: Sempre inicia em `(x, y) = (0, 0)`.
-* **Designers (2 peças)**:
-    * Um Designer começa em `(x, y) = (axleX - 1, 0)`.
-    * O outro Designer começa em `(x, y) = (0, axleY - 1)`.
-* **Product Owners (2 peças)**:
-    * Um Product Owner começa em `(x, y) = (axleX - 1, axleY - 1)`.
-    * O outro Product Owner começa em `(x, y) = (Math.floor(axleX / 2), Math.floor(axleY / 2))`.
+* **Developer**: Always starts at `(x, y) = (0, 0)`.
+* **Designers (2 pieces)**:
+    * One Designer starts at `(x, y) = (axleX - 1, 0)`.
+    * The other Designer starts at `(x, y) = (0, axleY - 1)`.
+* **Product Owners (2 pieces)**:
+    * One Product Owner starts at `(x, y) = (axleX - 1, axleY - 1)`.
+    * The other Product Owner starts at `(x, y) = (Math.floor(axleX / 2), Math.floor(axleY / 2))`.
 
-### 4. Como Jogar
+### 4. How to Play
 
-* O primeiro turno é do lado **Branco**.
-* Para ganhar o jogo, você deve capturar o "Product Owner" do seu adversário.
+* The first turn is for the **White** side.
+* To win the game, you must capture your opponent's "Product Owner".
 
 ---
- 
