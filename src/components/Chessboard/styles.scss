@@ -1,0 +1,42 @@
+.chessboard {
+  display: grid;
+  width: min-content;
+  height: min-content;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  border: 2px solid var(--color-dark-gray);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.01);
+  box-shadow: 0 4px 44px var(--color-black);
+  backdrop-filter: blur(8px);
+}
+
+.chessboard__row {
+  display: contents;
+}
+
+.chessboard__cell {
+  display: flex;
+  width: clamp(2rem, 8vw, 4.5rem);
+  height: clamp(2rem, 8vw, 4.5rem);
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.chessboard__cell--light {
+  background: linear-gradient(
+    153.43deg,
+    var(--color-light-cell-start) 0%,
+    var(--color-light-cell-end) 83.33%
+  );
+}
+
+.chessboard__cell--dark {
+  background: linear-gradient(
+    153.43deg,
+    var(--color-dark-cell-start) 0%,
+    var(--color-dark-cell-end) 83.33%
+  );
+}
