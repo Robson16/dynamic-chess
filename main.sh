@@ -1,1 +1,0 @@
-docker build -t candidate-test . && docker run --rm -p 3000:3000 candidate-test
