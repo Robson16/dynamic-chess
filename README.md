@@ -4,6 +4,12 @@ This project features a dynamic and responsive chessboard, built with Next.js an
 
 ---
 
+## Layout / Design
+
+Reference layout in Figma: [Unvoid Chessboard Prototype](https://www.figma.com/proto/5Yl0MsTnUMhEBnhTQulD1H/unvoid-chessboard?node-id=1-2&t=4AUvwEqLHZsNKH4p-1)
+
+---
+
 ## Implemented Features
 
 * **Dynamic Board**: Board dimensions (X and Y axes) can be defined by the user via numerical inputs.
