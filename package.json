@@ -1,6 +1,6 @@
 {
   "name": "dynamic-chess",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A dynamic and responsive chessboard in Next.js/React with customizable dimensions and specific movement pieces.",
   "author": {
     "name": "Robson H. Rodrigues",
