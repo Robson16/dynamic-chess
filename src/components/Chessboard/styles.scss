@@ -16,6 +16,7 @@
 }
 
 .chessboard__cell {
+  position: relative;
   display: flex;
   width: clamp(2rem, 8vw, 4.5rem);
   height: clamp(2rem, 8vw, 4.5rem);
@@ -25,18 +26,33 @@
   font-weight: bold;
 }
 
+.chessboard__notation {
+  position: absolute;
+  pointer-events: none;
+  padding: 0.25rem;
+  line-height: 1;
+  font-weight: 400;
+  font-size: 0.9rem;
+
+  &--row {
+    top: 0;
+    left: 0;
+  }
+
+  &--column {
+    bottom: 0;
+    right: 0;
+  }
+}
+
 .chessboard__cell--light {
-  background: linear-gradient(
-    153.43deg,
-    var(--color-light-cell-start) 0%,
-    var(--color-light-cell-end) 83.33%
-  );
+  background: linear-gradient(153.43deg,
+      var(--color-light-cell-start) 0%,
+      var(--color-light-cell-end) 83.33%);
 }
 
 .chessboard__cell--dark {
-  background: linear-gradient(
-    153.43deg,
-    var(--color-dark-cell-start) 0%,
-    var(--color-dark-cell-end) 83.33%
-  );
+  background: linear-gradient(153.43deg,
+      var(--color-dark-cell-start) 0%,
+      var(--color-dark-cell-end) 83.33%);
 }

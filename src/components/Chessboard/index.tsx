@@ -13,8 +13,22 @@ export default function Chessboard({ columns, rows }: BoardDimensions) {
       return (
         <div
           key={`${column}-${row}`}
+          data-column={column}
+          data-row={row}
           className={`chessboard__cell ${isLight ? 'chessboard__cell--light' : 'chessboard__cell--dark'}`}
-        />
+        >
+          {column === 0 && (
+            <span className="chessboard__notation chessboard__notation--row">
+              {rows - row}
+            </span>
+          )}
+
+          {row === rows - 1 && (
+            <span className="chessboard__notation chessboard__notation--column">
+              {String.fromCharCode(97 + column).toUpperCase()}
+            </span>
+          )}
+        </div>
       );
     });
 
