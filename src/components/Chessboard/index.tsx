@@ -1,11 +1,18 @@
 import './styles.scss';
 
+import { generateInitialPieces } from '@/utils/boardLogic';
+
+import ChessboardNotation from './Notation';
+import Piece from './Piece';
+
 export type BoardDimensions = {
   columns: number;
   rows: number;
 };
 
 export default function Chessboard({ columns, rows }: BoardDimensions) {
+  const pieces = generateInitialPieces(columns, rows);
+
   const boardRows = Array.from({ length: rows }, (_, row) => {
     const cells = Array.from({ length: columns }, (_, column) => {
       const isLight = (column + row) % 2 === 0;
@@ -17,17 +24,12 @@ export default function Chessboard({ columns, rows }: BoardDimensions) {
           data-row={row}
           className={`chessboard__cell ${isLight ? 'chessboard__cell--light' : 'chessboard__cell--dark'}`}
         >
-          {column === 0 && (
-            <span className="chessboard__notation chessboard__notation--row">
-              {rows - row}
-            </span>
-          )}
-
-          {row === rows - 1 && (
-            <span className="chessboard__notation chessboard__notation--column">
-              {String.fromCharCode(97 + column).toUpperCase()}
-            </span>
-          )}
+          <ChessboardNotation rowIndex={row} columnIndex={column} rows={rows} />
+          {pieces
+            .filter((piece) => piece.x === column && piece.y === row)
+            .map((piece) => (
+              <Piece key={piece.id} color={piece.color} type={piece.type} />
+            ))}
         </div>
       );
     });

@@ -46,13 +46,17 @@
 }
 
 .chessboard__cell--light {
-  background: linear-gradient(153.43deg,
-      var(--color-light-cell-start) 0%,
-      var(--color-light-cell-end) 83.33%);
+  background: linear-gradient(
+    153.43deg,
+    var(--color-light-cell-start) 0%,
+    var(--color-light-cell-end) 83.33%
+  );
 }
 
 .chessboard__cell--dark {
-  background: linear-gradient(153.43deg,
-      var(--color-dark-cell-start) 0%,
-      var(--color-dark-cell-end) 83.33%);
+  background: linear-gradient(
+    153.43deg,
+    var(--color-dark-cell-start) 0%,
+    var(--color-dark-cell-end) 83.33%
+  );
 }
