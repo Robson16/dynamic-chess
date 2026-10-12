@@ -1,9 +1,9 @@
 import { v4 as uuid } from 'uuid';
 
-import { Piece } from '@/types/game';
+import type { PieceData } from '@/types/game';
 
 export function generateInitialPieces(columns: number, rows: number) {
-  const pieces: Piece[] = [];
+  const pieces: PieceData[] = [];
 
   // White Pieces
 

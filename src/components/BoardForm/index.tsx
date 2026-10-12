@@ -1,22 +1,25 @@
 'use client';
+
 import './styles.scss';
 
 import { CheckIcon, WarningIcon, XIcon } from '@phosphor-icons/react';
 import { ChangeEvent, FormEvent, useState } from 'react';
 
 import type { BoardDimensions } from '@/components/Chessboard';
+import {
+  INITIAL_BOARD_DIMENSIONS,
+  MAX_BOARD_DIMENSION,
+  MIN_BOARD_DIMENSION,
+} from '@/constants/board';
 type STATUS = 'idle' | 'playing' | 'error';
 
 type BoardFormProps = {
-  onBoardChange: (dimensions: BoardDimensions | null) => void;
+  onBoardChange: (dimensions: BoardDimensions) => void;
 };
 
 export default function BoardForm({ onBoardChange }: BoardFormProps) {
-  const MIN_DIMENSION = 6;
-  const MAX_DIMENSION = 12;
-
-  const [axleX, setAxleX] = useState(6);
-  const [axleY, setAxleY] = useState(6);
+  const [axleX, setAxleX] = useState(INITIAL_BOARD_DIMENSIONS.columns);
+  const [axleY, setAxleY] = useState(INITIAL_BOARD_DIMENSIONS.rows);
   const [status, setStatus] = useState<STATUS>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -25,7 +28,7 @@ export default function BoardForm({ onBoardChange }: BoardFormProps) {
 
     setStatus('idle');
     setErrorMessage('');
-    onBoardChange(null);
+    onBoardChange(INITIAL_BOARD_DIMENSIONS);
   };
 
   const handleAxleYChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -33,23 +36,23 @@ export default function BoardForm({ onBoardChange }: BoardFormProps) {
 
     setStatus('idle');
     setErrorMessage('');
-    onBoardChange(null);
+    onBoardChange(INITIAL_BOARD_DIMENSIONS);
   };
 
   const handleStartPlay = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (
-      axleX < MIN_DIMENSION ||
-      axleX > MAX_DIMENSION ||
-      axleY < MIN_DIMENSION ||
-      axleY > MAX_DIMENSION
+      axleX < MIN_BOARD_DIMENSION ||
+      axleX > MAX_BOARD_DIMENSION ||
+      axleY < MIN_BOARD_DIMENSION ||
+      axleY > MAX_BOARD_DIMENSION
     ) {
       setStatus('error');
       setErrorMessage(
-        `Please use values between ${MIN_DIMENSION} and ${MAX_DIMENSION}.`,
+        `Please use values between ${MIN_BOARD_DIMENSION} and ${MAX_BOARD_DIMENSION}.`,
       );
-      onBoardChange(null);
+      onBoardChange(INITIAL_BOARD_DIMENSIONS);
       return;
     }
 

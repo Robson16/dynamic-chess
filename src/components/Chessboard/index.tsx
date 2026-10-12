@@ -1,6 +1,6 @@
 import './styles.scss';
 
-import { generateInitialPieces } from '@/utils/boardLogic';
+import type { PieceData } from '@/types/game';
 
 import ChessboardNotation from './Notation';
 import Piece from './Piece';
@@ -10,9 +10,11 @@ export type BoardDimensions = {
   rows: number;
 };
 
-export default function Chessboard({ columns, rows }: BoardDimensions) {
-  const pieces = generateInitialPieces(columns, rows);
+type ChessboardProps = BoardDimensions & {
+  pieces: PieceData[];
+};
 
+export default function Chessboard({ columns, rows, pieces }: ChessboardProps) {
   const boardRows = Array.from({ length: rows }, (_, row) => {
     const cells = Array.from({ length: columns }, (_, column) => {
       const isLight = (column + row) % 2 === 0;
