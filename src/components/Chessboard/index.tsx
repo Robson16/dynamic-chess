@@ -1,6 +1,9 @@
 import './styles.scss';
 
+import { useState } from 'react';
+
 import type { PieceData } from '@/types/game';
+import { getProductOwnerMoves, ValidMove } from '@/utils/movementLogic';
 
 import ChessboardNotation from './Notation';
 import Piece from './Piece';
@@ -15,9 +18,45 @@ type ChessboardProps = BoardDimensions & {
 };
 
 export default function Chessboard({ columns, rows, pieces }: ChessboardProps) {
+  const [selectedPiece, setSelectedPiece] = useState<PieceData>();
+  const [validMoves, setValidMoves] = useState<ValidMove[]>([]);
+
+  const filterSelectedPieceMoves = (
+    moves: ValidMove[],
+    selected: PieceData,
+    allPieces: PieceData[],
+  ) => {
+    return moves.filter((move) => {
+      const occupant = allPieces.find(
+        (piece) => piece.x === move.x && piece.y === move.y,
+      );
+
+      return !occupant || occupant.color !== selected.color;
+    });
+  };
+
+  const handlePieceClick = (piece: PieceData) => {
+    setSelectedPiece(piece);
+
+    switch (piece.type) {
+      case 'product_owner':
+        const moves = getProductOwnerMoves(piece, columns, rows);
+        setValidMoves(filterSelectedPieceMoves(moves, piece, pieces));
+        break;
+      case 'developer':
+        break;
+      case 'designer':
+        break;
+    }
+  };
+
   const boardRows = Array.from({ length: rows }, (_, row) => {
     const cells = Array.from({ length: columns }, (_, column) => {
       const isLight = (column + row) % 2 === 0;
+
+      const isMoveValid = validMoves.some(
+        (move) => move.x === column && move.y === row,
+      );
 
       return (
         <div
@@ -27,10 +66,19 @@ export default function Chessboard({ columns, rows, pieces }: ChessboardProps) {
           className={`chessboard__cell ${isLight ? 'chessboard__cell--light' : 'chessboard__cell--dark'}`}
         >
           <ChessboardNotation rowIndex={row} columnIndex={column} rows={rows} />
+
+          {isMoveValid && <span className="chessboard__valid-move" />}
+
           {pieces
             .filter((piece) => piece.x === column && piece.y === row)
             .map((piece) => (
-              <Piece key={piece.id} color={piece.color} type={piece.type} />
+              <Piece
+                key={piece.id}
+                color={piece.color}
+                type={piece.type}
+                isSelected={selectedPiece?.id === piece.id}
+                onClick={() => handlePieceClick(piece)}
+              />
             ))}
         </div>
       );

@@ -1,3 +1,4 @@
+import { clsx } from 'clsx';
 import Image from 'next/image';
 
 import type { PieceType, PlayerColor } from '@/types/game';
@@ -5,6 +6,8 @@ import type { PieceType, PlayerColor } from '@/types/game';
 type PieceProps = {
   type: PieceType;
   color: PlayerColor;
+  isSelected: boolean;
+  onClick: () => void;
 };
 
 const images: Record<PieceType, Record<PlayerColor, string>> = {
@@ -22,14 +25,25 @@ const images: Record<PieceType, Record<PlayerColor, string>> = {
   },
 };
 
-export default function Piece({ type, color }: PieceProps) {
+export default function Piece({
+  type,
+  color,
+  isSelected,
+  onClick,
+}: PieceProps) {
   return (
-    <Image
-      src={images[type][color]}
-      alt={`${type} ${color}`}
-      width={54}
-      height={54}
-      className="chessboard__piece"
-    />
+    <button
+      className={clsx('chessboard__piece', {
+        'chessboard__piece--selected': isSelected,
+      })}
+      onClick={onClick}
+    >
+      <Image
+        src={images[type][color]}
+        alt={`${type} ${color}`}
+        width={54}
+        height={54}
+      />
+    </button>
   );
 }
