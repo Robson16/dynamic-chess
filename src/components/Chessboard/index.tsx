@@ -5,6 +5,7 @@ import { useState } from 'react';
 import type { PieceData } from '@/types/game';
 import {
   getDesignerMoves,
+  getDeveloperMoves,
   getProductOwnerMoves,
   ValidMove,
 } from '@/utils/movementLogic';
@@ -35,7 +36,13 @@ export default function Chessboard({ columns, rows, pieces }: ChessboardProps) {
         (piece) => piece.x === move.x && piece.y === move.y,
       );
 
-      return !occupant || occupant.color !== selected.color;
+      if (!occupant) return true;
+
+      if (selected.type === 'developer') {
+        return false;
+      }
+
+      return occupant.color !== selected.color;
     });
   };
 
@@ -50,6 +57,8 @@ export default function Chessboard({ columns, rows, pieces }: ChessboardProps) {
         setValidMoves(filterSelectedPieceMoves(moves, piece, pieces));
         break;
       case 'developer':
+        moves = getDeveloperMoves(piece, columns, rows);
+        setValidMoves(filterSelectedPieceMoves(moves, piece, pieces));
         break;
       case 'designer':
         moves = getDesignerMoves(piece, columns, rows);

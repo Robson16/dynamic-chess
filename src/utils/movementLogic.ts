@@ -55,3 +55,37 @@ export function getDesignerMoves(
 
   return validMoves;
 }
+
+export function getDeveloperMoves(
+  piece: PieceData,
+  columns: number,
+  rows: number,
+): ValidMove[] {
+  const validMoves: ValidMove[] = [];
+
+  for (let xOffset = -3; xOffset <= 3; xOffset++) {
+    for (let yOffset = -3; yOffset <= 3; yOffset++) {
+      if (xOffset === 0 && yOffset === 0) continue;
+
+      const isHorizontal = yOffset === 0;
+      const isVertical = xOffset === 0;
+      const isDiagonal = Math.abs(xOffset) === Math.abs(yOffset);
+
+      if (isHorizontal || isVertical || isDiagonal) {
+        let targetX = piece.x + xOffset;
+        let targetY = piece.y + yOffset;
+
+        if (
+          targetX >= 0 &&
+          targetX < columns &&
+          targetY >= 0 &&
+          targetY < rows
+        ) {
+          validMoves.push({ x: targetX, y: targetY });
+        }
+      }
+    }
+  }
+
+  return validMoves;
+}
