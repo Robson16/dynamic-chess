@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0](https://github.com/Robson16/dynamic-chess/compare/v0.1.3...v1.0.0) (2026-10-13)
+
+### Bug Fixes
+
+* implement jump capture mechanic for Developer piece ([44b05d4](https://github.com/Robson16/dynamic-chess/commit/44b05d438498f4bc480f4c93418b7ac7f12a8a54))
+
 ## [0.1.3](https://github.com/Robson16/dynamic-chess/compare/v0.1.2...v0.1.3) (2026-10-13)
 
 ### Features
