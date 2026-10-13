@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.3](https://github.com/Robson16/dynamic-chess/compare/v0.1.2...v0.1.3) (2026-10-13)
+
+### Features
+
+* add piece selection and move highlighting ([d11fb6f](https://github.com/Robson16/dynamic-chess/commit/d11fb6fe07de08c9afd27ff64e2bcbae7dce5d28))
+* add turn indicator and board ui polish ([bc70ed5](https://github.com/Robson16/dynamic-chess/commit/bc70ed5096e7463ab73dbfc819f536de343afa1e))
+* add winner detection and reset flow ([c955ac2](https://github.com/Robson16/dynamic-chess/commit/c955ac21a384ade53210db0d0c3a914910c81574))
+* implement movement logic for designer pieces ([a190874](https://github.com/Robson16/dynamic-chess/commit/a1908745458b68435f6c81d5e4e87802ad6c4b23))
+* implement movement logic for developer pieces ([b8fb862](https://github.com/Robson16/dynamic-chess/commit/b8fb86298c7af9b360068323e29a4a7462814e10))
+
 ## [0.1.2](https://github.com/Robson16/dynamic-chess/compare/v0.1.1...v0.1.2) (2026-10-12)
 
 ### Features
