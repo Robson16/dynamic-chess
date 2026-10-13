@@ -7,6 +7,7 @@ type PieceProps = {
   type: PieceType;
   color: PlayerColor;
   isSelected: boolean;
+  isDisabled: boolean;
   onClick: () => void;
 };
 
@@ -29,10 +30,12 @@ export default function Piece({
   type,
   color,
   isSelected,
+  isDisabled,
   onClick,
 }: PieceProps) {
   return (
     <button
+      disabled={isDisabled}
       className={clsx('chessboard__piece', {
         'chessboard__piece--selected': isSelected,
       })}

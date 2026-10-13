@@ -138,6 +138,7 @@ export default function Chessboard({
                 color={piece.color}
                 type={piece.type}
                 isSelected={selectedPiece?.id === piece.id}
+                isDisabled={Boolean(winner) || piece.color !== currentTurn}
                 onClick={() => handlePieceClick(piece)}
               />
             ))}

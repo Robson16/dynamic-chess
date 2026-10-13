@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: 'Dynamic Chess',
   description:
     'A dynamic and responsive chessboard in Next.js/React with customizable dimensions and specific movement pieces.',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({

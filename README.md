@@ -1,23 +1,20 @@
 # Dynamic Chess: Dynamic Board with React and Next.js
 
-This project features a dynamic and responsive chessboard, built with Next.js and React. The goal is to create a functional game foundation with customizable dimensions and pieces with specific movements.
+![Dynamic Chess cover](public/cover.png)
 
----
-
-## Layout / Design
-
-Reference layout in Figma: [Unvoid Chessboard Prototype](https://www.figma.com/proto/5Yl0MsTnUMhEBnhTQulD1H/unvoid-chessboard?node-id=1-2&t=4AUvwEqLHZsNKH4p-1)
+Dynamic Chess is a local, two-player strategy game built with Next.js, React, and TypeScript. Play on a configurable board and use three pieces with distinct movement and capture rules.
 
 ---
 
 ## Implemented Features
 
-- **Dynamic Board**: Board dimensions (X and Y axes) can be defined by the user via numerical inputs.
-- **Dimension Validation**: The board is only rendered if the dimensions are between 6x6 and 12x12 (vertically and horizontally), ensuring a valid game size. Feedback messages are displayed to the user.
-    * **Examples of allowed dimensions:** 6x6, 6x8, 6x12, 12x12, 10x7.
-    * **Examples of NOT allowed dimensions:** 13x6, 5x6.
-- **Responsive Design**: Board cells adapt to screen size, maintaining their square aspect ratio, and the game configuration layout adjusts for mobile devices.
-- **SCSS Styling**: Uses SCSS for modular and organized styling, with CSS variables for color management.
+- **Configurable Board**: Choose the number of columns and rows independently, from 6 to 12, with feedback for invalid dimensions. The game starts on an 8x8 board.
+- **Turn-Based Play**: White moves first, followed by alternating turns. The active color is displayed, only that player's pieces can be selected, and the cursor reflects which pieces are available.
+- **Move Guidance**: Selecting a piece highlights its valid destination squares. Moves are restricted to the board and cannot end on a square occupied by a piece of the same color.
+- **Distinct Piece Rules**: Developer, Designer, and Product Owner each have unique movement and capture behavior.
+- **Win Condition**: Capture the opposing Product Owner to win. A result screen offers a new match, resetting the board to its default setup.
+- **Responsive Interface**: Board squares scale with the viewport, and the configuration form adapts to smaller screens.
+- **SCSS Styling**: Modular stylesheets and shared CSS variables keep the interface styling organized.
 
 ---
 
@@ -25,6 +22,7 @@ Reference layout in Figma: [Unvoid Chessboard Prototype](https://www.figma.com/p
 
 - **Next.js**: React framework for server-side rendering and optimizations.
 - **React**: JavaScript library for building user interfaces.
+- **TypeScript**: Static typing for application data and component contracts.
 - **SCSS (Sass)**: CSS pre-processor for more powerful and organized styles.
 
 ---
@@ -34,12 +32,14 @@ Reference layout in Figma: [Unvoid Chessboard Prototype](https://www.figma.com/p
 Follow the steps below to set up and run the project on your local machine:
 
 1.  **Clone the repository:**
+
     ```bash
     git clone https://github.com/Robson16/dynamic-chess.git
     cd dynamic-chess
     ```
 
 2.  **Install dependencies:**
+
     ```bash
     npm install
     # or
@@ -47,6 +47,7 @@ Follow the steps below to set up and run the project on your local machine:
     ```
 
 3.  **Start the development server:**
+
     ```bash
     npm run dev
     # or
@@ -65,17 +66,20 @@ The board can have custom dimensions defined by the user before the game starts.
 
 ### 2. The Pieces
 
-**Capture rule:** The Developer captures by jumping over an opponent's piece; the captured piece is removed, and the Developer must land on an unoccupied square. The Designer and Product Owner capture by moving onto an opponent's occupied square, removing that piece and taking its place. No piece can land on a square occupied by a piece of the same color.
+**Capture rule:** The Developer captures opposing pieces crossed along its path; its destination must be unoccupied. The Designer and Product Owner capture by moving onto an opponent's occupied square, removing that piece and taking its place. No piece can land on a square occupied by a piece of the same color.
 
 #### 2.1. The "Developer"
+
 - **Movement**: Can jump up to 3 squares per turn in any direction: vertically, horizontally, or diagonally.
-- **Capture**: Captures an opponent by jumping over it. The destination square cannot be occupied.
+- **Capture**: Removes any opposing pieces along its path. The destination square must be empty.
 
 #### 2.2. The "Designer"
+
 - **Movement**: Can jump in an "L" shape, like a knight in chess.
 - **Capture**: Captures an opponent by moving onto its square.
 
 #### 2.3. The "Product Owner"
+
 - **Movement**: Can move one square per turn in any direction: vertically, horizontally, or diagonally.
 - **Capture**: Captures an opponent by moving onto its square.
 

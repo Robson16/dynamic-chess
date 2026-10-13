@@ -102,6 +102,11 @@
   height: 100%;
   border: 0;
   background: none;
+  cursor: default;
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
 
   &--selected {
     position: relative;
