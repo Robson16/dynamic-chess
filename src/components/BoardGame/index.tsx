@@ -55,21 +55,49 @@ export default function BoardGame() {
     if (winner) return;
 
     setPieces((prevPieces) => {
+      const capturedIds = new Set<string>();
+
+      if (movedPiece.type === 'developer') {
+        const stepX = Math.sign(targetX - movedPiece.x);
+        const stepY = Math.sign(targetY - movedPiece.y);
+
+        let currentX = movedPiece.x + stepX;
+        let currentY = movedPiece.y + stepY;
+
+        while (currentX !== targetX || currentY !== targetY) {
+          const pieceOnPath = prevPieces.find(
+            (piece) =>
+              piece.x === currentX &&
+              piece.y === currentY &&
+              piece.color !== movedPiece.color,
+          );
+
+          if (pieceOnPath) {
+            capturedIds.add(pieceOnPath.id);
+          }
+
+          currentX += stepX;
+          currentY += stepY;
+        }
+      }
+
       return prevPieces
-        .filter(
-          (piece) =>
-            !(
-              piece.id !== movedPiece.id &&
-              piece.x === targetX &&
-              piece.y === targetY
-            ),
-        )
+        .filter((piece) => {
+          if (piece.id === movedPiece.id) return true;
+
+          if (piece.x === targetX && piece.y === targetY) return false;
+
+          if (capturedIds.has(piece.id)) return false;
+
+          return true;
+        })
         .map((piece) =>
           piece.id === movedPiece.id
             ? { ...piece, x: targetX, y: targetY }
             : piece,
         );
     });
+
     setTurn((prevTurn) => (prevTurn === 'white' ? 'black' : 'white'));
   };
 
