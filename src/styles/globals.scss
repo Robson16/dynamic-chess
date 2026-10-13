@@ -1,23 +1,45 @@
 :root {
-  --color-dark-gray: #333;
+  /* Neutrals */
   --color-black: #000000;
+  --color-dark-gray: #333;
+  --color-gray: #28282a;
+  --color-medium-gray: #5a5a5e;
+
+  /* Text */
+  --color-white-text: #fafafa;
+  --color-white-text-shadow: rgba(255, 255, 255, 0.25);
+
+  /* Board */
   --color-light-cell-start: rgba(250, 250, 250, 0.3);
   --color-light-cell-end: rgba(255, 255, 255, 0.15);
   --color-dark-cell-start: rgba(250, 250, 250, 0.15);
   --color-dark-cell-end: rgba(255, 255, 255, 0.05);
-  --color-medium-gray: #5a5a5e;
+
+  /* Glass / overlay */
   --color-white-transparent-bg-start: rgba(255, 255, 255, 0.075);
   --color-white-transparent-bg-end: rgba(255, 255, 255, 0.03);
   --color-white-transparent-border-start: rgba(250, 250, 250, 0.05);
   --color-white-transparent-border-end: rgba(255, 255, 255, 0.02);
-  --color-white-text: #fafafa;
-  --color-white-text-shadow: rgba(255, 255, 255, 0.25);
-  --color-gradient-blue-start: #7d89c4;
-  --color-gradient-blue-end: #4967fe;
+
+  /* Accent / states */
   --color-red-error: #ff5555;
   --color-orange: #ff9f47;
   --color-highlighted-start: rgba(255, 139, 31, 0.4);
   --color-highlighted-end: rgba(255, 139, 31, 0.2);
+  --color-gradient-blue-start: #7d89c4;
+  --color-gradient-blue-end: #4967fe;
+
+  /* Winner modal */
+  --color-winner-card-bg-start: rgba(250, 250, 250, 0.125);
+  --color-winner-card-bg-end: rgba(255, 255, 255, 0.05);
+  --color-winner-footer-bg-start: rgba(250, 250, 250, 0.025);
+  --color-winner-footer-bg-end: rgba(255, 255, 255, 0.01);
+  --color-winner-shadow: rgba(0, 0, 0, 0.8);
+  --color-winner-button-border: #fafafa;
+  --color-winner-button-start: #7d89c4;
+  --color-winner-button-end: #4967fe;
+
+  /* App shell */
   --background: #c9c9c9;
   --foreground: #100f11;
 }

@@ -2,7 +2,7 @@ import './styles.scss';
 
 import { useState } from 'react';
 
-import type { PieceData } from '@/types/game';
+import type { PieceData, PlayerColor } from '@/types/game';
 import {
   getDesignerMoves,
   getDeveloperMoves,
@@ -20,9 +20,23 @@ export type BoardDimensions = {
 
 type ChessboardProps = BoardDimensions & {
   pieces: PieceData[];
+  currentTurn: PlayerColor;
+  winner: PlayerColor | null;
+  onMovePiece: (
+    movedPiece: PieceData,
+    targetX: number,
+    targetY: number,
+  ) => void;
 };
 
-export default function Chessboard({ columns, rows, pieces }: ChessboardProps) {
+export default function Chessboard({
+  columns,
+  rows,
+  pieces,
+  currentTurn,
+  winner,
+  onMovePiece,
+}: ChessboardProps) {
   const [selectedPiece, setSelectedPiece] = useState<PieceData>();
   const [validMoves, setValidMoves] = useState<ValidMove[]>([]);
 
@@ -47,6 +61,20 @@ export default function Chessboard({ columns, rows, pieces }: ChessboardProps) {
   };
 
   const handlePieceClick = (piece: PieceData) => {
+    if (winner) {
+      setSelectedPiece(undefined);
+      setValidMoves([]);
+      return;
+    }
+
+    if (piece.color !== currentTurn) return;
+
+    if (selectedPiece?.id === piece.id) {
+      setSelectedPiece(undefined);
+      setValidMoves([]);
+      return;
+    }
+
     setSelectedPiece(piece);
 
     let moves: ValidMove[];
@@ -67,6 +95,21 @@ export default function Chessboard({ columns, rows, pieces }: ChessboardProps) {
     }
   };
 
+  const handleCellClick = (targetX: number, targetY: number) => {
+    if (winner) return;
+    if (!selectedPiece) return;
+
+    const isValidTarget = validMoves.some(
+      (move) => move.x === targetX && move.y === targetY,
+    );
+
+    if (isValidTarget) {
+      onMovePiece(selectedPiece, targetX, targetY);
+      setSelectedPiece(undefined);
+      setValidMoves([]);
+    }
+  };
+
   const boardRows = Array.from({ length: rows }, (_, row) => {
     const cells = Array.from({ length: columns }, (_, column) => {
       const isLight = (column + row) % 2 === 0;
@@ -81,6 +124,7 @@ export default function Chessboard({ columns, rows, pieces }: ChessboardProps) {
           data-column={column}
           data-row={row}
           className={`chessboard__cell ${isLight ? 'chessboard__cell--light' : 'chessboard__cell--dark'}`}
+          onClick={() => handleCellClick(column, row)}
         >
           <ChessboardNotation rowIndex={row} columnIndex={column} rows={rows} />
 
@@ -109,11 +153,22 @@ export default function Chessboard({ columns, rows, pieces }: ChessboardProps) {
   });
 
   return (
-    <div
-      className="chessboard"
-      style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
-    >
-      {boardRows}
+    <div className="chessboard-wrapper">
+      <div className="chessboard__turn" aria-live="polite">
+        <span className="chessboard__turn-label">Turn:</span>
+        <span
+          className={`chessboard__turn-player chessboard__turn-player--${currentTurn}`}
+        >
+          {currentTurn === 'white' ? 'White' : 'Black'}
+        </span>
+      </div>
+
+      <div
+        className="chessboard"
+        style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
+      >
+        {boardRows}
+      </div>
     </div>
   );
 }
