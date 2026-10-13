@@ -27,3 +27,31 @@ export function getProductOwnerMoves(
 
   return validMoves;
 }
+
+export function getDesignerMoves(
+  piece: PieceData,
+  columns: number,
+  rows: number,
+): ValidMove[] {
+  const validMoves: ValidMove[] = [];
+
+  for (let xOffset = -2; xOffset <= 2; xOffset++) {
+    for (let yOffset = -2; yOffset <= 2; yOffset++) {
+      if (Math.abs(xOffset) + Math.abs(yOffset) === 3) {
+        let targetX = piece.x + xOffset;
+        let targetY = piece.y + yOffset;
+
+        if (
+          targetX >= 0 &&
+          targetX < columns &&
+          targetY >= 0 &&
+          targetY < rows
+        ) {
+          validMoves.push({ x: targetX, y: targetY });
+        }
+      }
+    }
+  }
+
+  return validMoves;
+}

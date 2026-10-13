@@ -3,7 +3,11 @@ import './styles.scss';
 import { useState } from 'react';
 
 import type { PieceData } from '@/types/game';
-import { getProductOwnerMoves, ValidMove } from '@/utils/movementLogic';
+import {
+  getDesignerMoves,
+  getProductOwnerMoves,
+  ValidMove,
+} from '@/utils/movementLogic';
 
 import ChessboardNotation from './Notation';
 import Piece from './Piece';
@@ -38,14 +42,18 @@ export default function Chessboard({ columns, rows, pieces }: ChessboardProps) {
   const handlePieceClick = (piece: PieceData) => {
     setSelectedPiece(piece);
 
+    let moves: ValidMove[];
+
     switch (piece.type) {
       case 'product_owner':
-        const moves = getProductOwnerMoves(piece, columns, rows);
+        moves = getProductOwnerMoves(piece, columns, rows);
         setValidMoves(filterSelectedPieceMoves(moves, piece, pieces));
         break;
       case 'developer':
         break;
       case 'designer':
+        moves = getDesignerMoves(piece, columns, rows);
+        setValidMoves(filterSelectedPieceMoves(moves, piece, pieces));
         break;
     }
   };
