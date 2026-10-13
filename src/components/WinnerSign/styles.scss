@@ -1,0 +1,94 @@
+.winner-sign {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 534px);
+  border: 3px solid var(--color-medium-gray);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 44px var(--color-winner-shadow);
+  background: transparent;
+}
+
+.winner-sign__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  min-height: 178px;
+  padding: 32px 40px 40px;
+  background: linear-gradient(
+    94.68deg,
+    var(--color-winner-card-bg-start) 9.22%,
+    var(--color-winner-card-bg-end) 90.35%
+  );
+  backdrop-filter: blur(16px);
+}
+
+.winner-sign__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  color: var(--color-white-text);
+  background: var(--color-gray);
+  border: 3px solid var(--color-medium-gray);
+  border-radius: 16px;
+}
+
+.winner-sign__text {
+  color: var(--color-white-text);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px var(--color-white-text-shadow);
+}
+
+.winner-sign__footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 24px 24px;
+  border-top: 3px solid var(--color-medium-gray);
+  background: linear-gradient(
+    94.68deg,
+    var(--color-winner-footer-bg-start) 9.22%,
+    var(--color-winner-footer-bg-end) 90.35%
+  );
+  backdrop-filter: blur(16px);
+}
+
+.winner-sign__btn-reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 121px;
+  min-height: 28px;
+  padding: 8px 12px;
+  border: 3px solid var(--color-winner-button-border);
+  border-radius: 8px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    var(--color-winner-button-start) 0%,
+    var(--color-winner-button-end) 100%
+  );
+  color: var(--color-white-text);
+  text-transform: uppercase;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.winner-sign__btn-reset:hover {
+  transform: translateY(-1px);
+  opacity: 0.96;
+}
+
+.winner-sign__btn-reset:active {
+  transform: translateY(0);
+}
